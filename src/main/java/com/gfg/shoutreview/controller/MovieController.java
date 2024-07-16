@@ -4,6 +4,7 @@ import com.gfg.shoutreview.domain.Movie;
 import com.gfg.shoutreview.service.MovieService;
 import com.gfg.shoutreview.service.response.MovieResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +25,7 @@ public class MovieController {
     }
 
     @GetMapping("/genre")
+    @Cacheable(value="movies" , key ="#top5MovieByGenre")
     public List<MovieResponse> findMovieByGenre(@RequestParam String genre){
         return movieService.findMoviesByGenre(genre);
     }
