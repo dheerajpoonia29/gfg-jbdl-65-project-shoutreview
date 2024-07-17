@@ -1,11 +1,14 @@
 package com.gfg.shoutreview.config;
 
+import com.gfg.shoutreview.service.response.MovieResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 import org.springframework.data.redis.core.RedisTemplate;
+
+import java.util.List;
 
 @Configuration
 @EnableRedisRepositories
@@ -27,10 +30,9 @@ public class RedisConfig {
     }
 
     @Bean
-    public RedisTemplate<String, Object> template(){
-        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+    public RedisTemplate<String, List<MovieResponse>> template(){
+        RedisTemplate<String, List<MovieResponse>> template = new RedisTemplate<String, List<MovieResponse>>();
         template.setConnectionFactory(connectionFactory());
-
         return template;
     }
 }

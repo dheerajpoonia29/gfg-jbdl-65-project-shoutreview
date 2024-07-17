@@ -4,6 +4,7 @@ package com.gfg.shoutreview.service.response;
 import com.gfg.shoutreview.domain.Genre;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class MovieResponse {
+public class MovieResponse implements Serializable {
 
     private String title;
     private Genre genre;

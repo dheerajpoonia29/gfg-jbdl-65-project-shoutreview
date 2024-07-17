@@ -25,7 +25,7 @@ public class MovieController {
     }
 
     @GetMapping("/genre")
-    @Cacheable(value="movies" , key ="#top5MovieByGenre")
+    @Cacheable(value="genre" , key ="#genre")
     public List<MovieResponse> findMovieByGenre(@RequestParam String genre){
         return movieService.findMoviesByGenre(genre);
     }
